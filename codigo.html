@@ -1,0 +1,47 @@
+<html>
+<body>
+<form name="formulario">
+<p>Escolha a foto:</p>
+<p><input type="file" name="procura" size="20"></p>
+
+<script>
+    
+function verifica_extencao() {
+ var extensoesOk = ",.jpg,.png,.jpeg,.pdf, ";
+
+ var extensao = "," + document.formulario.procura.value.substr( document.formulario.procura.value.length - 4 ).toLowerCase() + ",";
+ if( extensoesOk.indexOf( extensao ) === -1 )
+    { alert( document.formulario.procura.value + "\nNão possui uma extensão válida" );
+   }
+else {javascript:size();}     
+}
+
+function size() {
+var imagem= new Image();
+imagem.src= document.formulario.procura.value;
+tamanho_imagem = imagem.fileSize; 
+img_tan = tamanho_imagem;
+if (tamanho_imagem > 2048)
+   {alert("O tamanho da Imagem é muito grande!");}
+   
+else 
+   {javascript:activate_figure();}
+}
+
+function activate_figure() {
+document.getElementById('foto').innerHTML = "<img border=\"0\" src=\""+document.formulario.procura.value+"\" name=\"img\" style=\"visibility: hidden\" >";
+largura = document.getElementById("img").width;
+altura = document.getElementById("img").height;
+alert("Arquivo de Imagem. \n Dimensões: "+largura+"x"+altura+"\n Tamanho :"+tamanho_imagem);
+}
+
+
+
+
+</script>
+
+</form>
+<p><a href="javascript:verifica_extencao()">Verificar...</a></p>
+<div id="foto"></div>
+</body>
+</html>
