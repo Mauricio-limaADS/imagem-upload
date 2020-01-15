@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Teste</title>
+<script> 
+function verifica_extencao() {
+var extensoesOk = ",.gif,.jpg,.jpeg,.pdf,";
+var alturaOk = 1000;
+var larguraOk = 1000;
+var pesoOk = 2048;
+var extensao	= "," + document.form.logomarca.value.substr( document.form.logomarca.value.length - 4 ).toLowerCase() + ",";
+if (document.form.logomarca.value == "")
+ {alert("O campo do endereço da imagem está vazio!!")}
+else if( extensoesOk.indexOf( extensao ) == -1 )
+ { alert( document.form.logomarca.value + "\nNão possui uma extensão válida" );java script:location.reload()}
+else {
+		document.getElementById('logotipo').innerHTML = "<img border=\"0\" src=\""+document.form.logomarca.value+"\" name=\"img\" style=\"visibility: hidden\" >"
+		largura = document.getElementById("img").width;
+		altura = document.getElementById("img").height;
+		if (largura >larguraOk || altura > alturaOk )
+		{alert("A imagem é "+largura+"x"+altura+" está fora do padrão requerido");java script:location.reload()}
+		else {
+			   var imagem=new Image();
+			   imagem.src=document.form.logomarca.value;
+			   tamanho_imagem = imagem.fileSize 
+			   img_tan = tamanho_imagem
+			   if (tamanho_imagem > pesoOk)
+				{alert("O tamanho da Imagem é muito grande ...  "+tamanho_imagem+" Bytes!!");java script:location.reload()}
+			 }
+	  }
+							 }			 
+</script>
+</head>
+<body>
+<form name="form" enctype="multipart/form-data" method="post" action="jogoupload_gravar.asp" id="form">
+<p>Escolha a logotipo:</p>
+<p><input type="file" name="logomarca" size="20" class="form2" id="logomarca" onChange="verifica_extencao() "></p>
+<div id="logotipo"></div>
+</form>
+</body>
+</html>
